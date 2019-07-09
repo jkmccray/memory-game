@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: space-around;
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.card {
+  flex-basis: 23.5%;
+  height: 23.5%;
+  background-color: grey;
+}
+
+.card:active {
+  background-color: lightblue;
+}
+
+.card: {
+  background-color: red;
+}
