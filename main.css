@@ -4,6 +4,22 @@
   padding: 0;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  margin: 20px;
+}
+
+.btn {
+  width: 200px;
+  flex-basis: 50px; 
+  margin-top: 10px;
+  font-family: 'Raleway', sans-serif;
+  border-radius: 20px;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -17,7 +33,8 @@
 .card {
   flex-basis: 23.5%;
   height: 23.5%;
-  background-color: grey;
+  background-color: lightgray;
+  border-radius: 10px;
 }
 
 .card:active {
@@ -27,3 +44,4 @@
 .card: {
   background-color: red;
 }
+
