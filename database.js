@@ -1,34 +1,46 @@
 const database = [
   {
-    quote: "Quote 1",
-    char: "Character Name 1"
+    quote: "\"Do you wanna go do karate in the garage?\"",
+    movie: "Step Brothers"
   },
   {
-    quote: "Quote 2",
-    char: "Character Name 2"
+    quote: "\"I am Groot.\"",
+    movie: "Guardians of the Galaxy"
   },
   {
-    quote: "Quote 3",
-    char: "Character Name 3"
+    quote: "\"Put some Windex on it.\"",
+    movie: "My Big Fat Greek Wedding"
   },
   {
-    quote: "Quote 4",
-    char: "Character Name 4"
+    quote: "\"It does not do to dwell on dreams and forget to live.\"",
+    movie: "Harry Potter and the Sorcerer's Stone"
   },
   {
-    quote: "Quote 5",
-    char: "Character Name 5"
+    quote: "\"Stop trying to make \"fetch\" happen. It's not going to happen!\"",
+    movie: "Mean Girls"
   },
   {
-    quote: "Quote 6",
-    char: "Character Name 6"
+    quote: "\"What is this? A center for ants?\"",
+    movie: "Zoolander"
   },
   {
-    quote: "Quote 7",
-    char: "Character Name 7"
+    quote: "\"Why so serious?\"",
+    movie: "The Dark Knight"
   },
   {
-    quote: "Quote 8",
-    char: "Character Name 8"
+    quote: "\"Your mother was a hamster, and your father smelt of elderberries.\"",
+    movie: "Monty Python and the Holy Grail"
+  },
+  {
+    quote: "\"Hello. My name is Inigo Montoya. You killed my father. Prepare to die.\"",
+    movie: "The Princess Bride"
+  },
+  {
+    quote: "\"Why do we even HAVE that lever?\"",
+    movie: "The Emperor's New Groove"
+  },
+  {
+    quote: "\"I'm gonna steal the Declaration of Independence.\"",
+    movie: "National Treasure"
   }
 ]
