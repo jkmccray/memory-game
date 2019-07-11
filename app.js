@@ -5,7 +5,6 @@ function randomize() {
   const matchIndices = [];
   const pairs = [];
   generateCardIndices(cards, cardIndices);
-  console.log(cardIndices);
   generatePairIndices(database, matchIndices);
   generateRandPairs(database, matchIndices, pairs);
   appendCardContent(cards, cardIndices, pairs);
@@ -18,7 +17,7 @@ function getRandomNum(min, max) {
 
 // Function to generate the array of random card indices.
 function generateCardIndices(cards, randNumArr) {
-  avoidDuplicates(cards,randNumArr);
+  avoidDuplicates(cards, randNumArr);
 }
 
 // Function to generate the array of random pair indices.
@@ -28,7 +27,7 @@ function generatePairIndices(database, randNumArr) {
 
 // While loop tests to see whether the random number has already been generated. 
 // If so, it continues to run the random number function until a new number is generated.
-function avoidDuplicates(arr,randNumArr) {
+function avoidDuplicates(arr, randNumArr) {
   arr.forEach(() => {
     let randNum = getRandomNum(0, arr.length);
     while (randNumArr.includes(randNum)) {
@@ -55,4 +54,19 @@ function appendCardContent(cards, cardIndices, pairs) {
     cards[randIndex].innerHTML = pair.quote;
     cards[randIndex2].innerHTML = pair.movie;
   });
+}
+
+window.onload = () => {
+  const parentContainer = document.querySelector(".container");
+  parentContainer.addEventListener("click", (event) => {
+    toggleHidden(event);
+  });
+}
+
+function toggleHidden(e) {
+  if (e.target.tagName === "SPAN") {
+    e.target.classList.toggle("hidden");
+  } else if (e.target.tagName === "DIV") {
+    e.target.firstElementChild.classList.toggle("hidden");
+  }
 }
