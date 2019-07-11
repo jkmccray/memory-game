@@ -5,6 +5,7 @@ function randomize() {
   const matchIndices = [];
   const pairs = [];
   generateCardIndices(cards, cardIndices);
+  console.log(cardIndices);
   generatePairIndices(database, matchIndices);
   generateRandPairs(database, matchIndices, pairs);
   appendCardContent(cards, cardIndices, pairs);
@@ -17,21 +18,21 @@ function getRandomNum(min, max) {
 
 // Function to generate the array of random card indices.
 function generateCardIndices(cards, randNumArr) {
-  cards.forEach(() => {
-    let randNum = getRandomNum(0, cards.length);
-    while (randNumArr.includes(randNum)) {
-      randNum = getRandomNum(0, cards.length);
-    }
-    randNumArr.push(randNum);
-  });
+  avoidDuplicates(cards,randNumArr);
 }
 
 // Function to generate the array of random pair indices.
 function generatePairIndices(database, randNumArr) {
-  database.forEach(() => {
-    let randNum = getRandomNum(0, database.length);
+  avoidDuplicates(database, randNumArr);
+}
+
+// While loop tests to see whether the random number has already been generated. 
+// If so, it continues to run the random number function until a new number is generated.
+function avoidDuplicates(arr,randNumArr) {
+  arr.forEach(() => {
+    let randNum = getRandomNum(0, arr.length);
     while (randNumArr.includes(randNum)) {
-      randNum = getRandomNum(0, database.length);
+      randNum = getRandomNum(0, arr.length);
     }
     randNumArr.push(randNum);
   });
