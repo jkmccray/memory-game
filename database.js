@@ -1,4 +1,4 @@
-const quotes = [
+const database = [
   {
     quote: "Quote 1",
     char: "Character Name 1"
@@ -30,37 +30,5 @@ const quotes = [
   {
     quote: "Quote 8",
     char: "Character Name 8"
-  },
-  {
-    quote: "Quote 9",
-    char: "Character Name 9"
-  },
-  {
-    quote: "Quote 10",
-    char: "Character Name 10"
-  },
-  {
-    quote: "Quote 11",
-    char: "Character Name 11"
-  },
-  {
-    quote: "Quote 12",
-    char: "Character Name 12"
-  },
-  {
-    quote: "Quote 13",
-    char: "Character Name 13"
-  },
-  {
-    quote: "Quote 14",
-    char: "Character Name 14"
-  },
-  {
-    quote: "Quote 15",
-    char: "Character Name 15"
-  },
-  {
-    quote: "Quote 16",
-    char: "Character Name 16"
   }
 ]
