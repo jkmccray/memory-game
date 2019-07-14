@@ -1,5 +1,44 @@
-// Parent/intialization function
+const parentContainer = document.querySelector(".container");
+let score = 0;
+let mostRecentClick = null;
+
+parentContainer.addEventListener("click", (event) => {
+  removeHidden(event);
+  // checkForMatch(event);
+});
+
+function removeHidden(e) {
+  if (e.target.tagName === "SPAN") {
+    e.target.classList.remove("hidden");
+  } else if (e.target.tagName === "DIV") {
+    e.target.firstElementChild.classList.remove("hidden");
+  }
+}
+
+function generateGameBoard() {
+  parentContainer.innerHTML = null;
+  let cards = generateCards(16);
+  cards.forEach(card => {
+    parentContainer.appendChild(card);
+  });
+}
+
+function generateCards(numberOfCards) {
+  let cards = [];
+  for (let i = 0; i < numberOfCards; i++) {
+    let div = document.createElement("div");
+    div.classList.add("card");
+    let span = document.createElement("span");
+    span.classList.add("card-text", "hidden");
+    div.appendChild(span);
+    cards.push(div);
+  }
+  return cards;
+}
+
+// Parent function
 function randomize() {
+  generateGameBoard();
   const cards = document.querySelectorAll(".card-text");
   const cardIndices = [];
   const matchIndices = [];
@@ -52,21 +91,18 @@ function appendCardContent(cards, cardIndices, pairs) {
     const randIndex = cardIndices[idx];
     const randIndex2 = cardIndices[cards.length - 1 - idx];
     cards[randIndex].innerHTML = pair.quote;
+    // cards[randIndex].classList.add(`pair-${randIndex}`)
     cards[randIndex2].innerHTML = pair.movie;
+    // cards[randIndex2].classList.add(`pair-${randIndex}`)
   });
 }
 
-window.onload = () => {
-  const parentContainer = document.querySelector(".container");
-  parentContainer.addEventListener("click", (event) => {
-    toggleHidden(event);
-  });
-}
+// function checkForMatch(e) {
+//   if (mostRecentClick === null) {
+//     mostRecentClick = e.target;
+//   } else {
+//     if (mostRecentClick.classList === e.target.classList) {
+//     }
+//   }
 
-function toggleHidden(e) {
-  if (e.target.tagName === "SPAN") {
-    e.target.classList.toggle("hidden");
-  } else if (e.target.tagName === "DIV") {
-    e.target.firstElementChild.classList.toggle("hidden");
-  }
-}
+// }
