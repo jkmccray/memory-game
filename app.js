@@ -1,25 +1,55 @@
 const parentContainer = document.querySelector(".container")
 let score = 0
-let currentTurn = 0
+let globalPairs
+let firstSelection
+let secondSelection
+const scoreDisplay = document.querySelector("#score")
 
 parentContainer.addEventListener("click", (event) => {
   removeHidden(event);
-  // checkForMatch(event);
 });
 
 function removeHidden(e) {
   const allCards = document.querySelectorAll(".card-text")
   const allHiddenCards = document.querySelectorAll(".hidden")
   const numberOfCardsShowing = allCards.length - allHiddenCards.length
+  const cardSpan = e.target.firstElementChild
   if (numberOfCardsShowing === 2) {
     allCards.forEach(cardText => cardText.classList = "card-text hidden")
-    e.target.firstElementChild.classList.remove("hidden")
+    cardSpan.classList.remove("hidden")
+    assignSelection(cardSpan.textContent)
   } else if (e.target.tagName === "SPAN") {
     e.target.classList.remove("hidden")
+    assignSelection(e.target.textContent)
   } else if (e.target.tagName === "DIV") {
-    e.target.firstElementChild.classList.remove("hidden")
+    cardSpan.classList.remove("hidden")
+    assignSelection(cardSpan.textContent)
   }
-  console.log(currentTurn)
+}
+
+function assignSelection(textContent) {
+  if (firstSelection && secondSelection) {
+    firstSelection = null
+    secondSelection = null
+  }
+  if (!firstSelection) {
+    firstSelection = textContent
+  } else if (!secondSelection) {
+    secondSelection = textContent
+    checkForMatch()
+  }
+}
+
+function checkForMatch() {
+  globalPairs.forEach(pair => {
+    if (pair.quote === firstSelection && pair.movie === secondSelection) {
+      score++
+      scoreDisplay.textContent = score
+    } else if (pair.movie === firstSelection && pair.quote === secondSelection) {
+      score++
+      scoreDisplay.textContent = score
+    }
+  })
 }
 
 function generateGameBoard() {
@@ -27,7 +57,8 @@ function generateGameBoard() {
   let cards = generateCards(16)
   cards.forEach(card => {
     parentContainer.appendChild(card)
-  });
+  })
+
 }
 
 function generateCards(numberOfCards) {
@@ -54,6 +85,7 @@ function randomize() {
   generatePairIndices(database, matchIndices);
   generateRandPairs(database, matchIndices, pairs);
   appendCardContent(cards, cardIndices, pairs);
+  globalPairs = pairs
 }
 
 // Function to get random number. Need this to generate random numbers to create arrays of indices for selecting pairs and cards randomly.
@@ -102,13 +134,3 @@ function appendCardContent(cards, cardIndices, pairs) {
     // cards[randIndex2].classList.add(`pair-${randIndex}`)
   });
 }
-
-// function checkForMatch(e) {
-//   if (mostRecentClick === null) {
-//     mostRecentClick = e.target;
-//   } else {
-//     if (mostRecentClick.classList === e.target.classList) {
-//     }
-//   }
-
-// }

@@ -20,6 +20,10 @@
   border-radius: 20px;
 }
 
+.score-parent {
+  margin-top: 10px;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
