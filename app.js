@@ -1,6 +1,6 @@
-const parentContainer = document.querySelector(".container");
-let score = 0;
-let mostRecentClick = null;
+const parentContainer = document.querySelector(".container")
+let score = 0
+let currentTurn = 0
 
 parentContainer.addEventListener("click", (event) => {
   removeHidden(event);
@@ -8,18 +8,25 @@ parentContainer.addEventListener("click", (event) => {
 });
 
 function removeHidden(e) {
-  if (e.target.tagName === "SPAN") {
-    e.target.classList.remove("hidden");
+  const allCards = document.querySelectorAll(".card-text")
+  const allHiddenCards = document.querySelectorAll(".hidden")
+  const numberOfCardsShowing = allCards.length - allHiddenCards.length
+  if (numberOfCardsShowing === 2) {
+    allCards.forEach(cardText => cardText.classList = "card-text hidden")
+    e.target.firstElementChild.classList.remove("hidden")
+  } else if (e.target.tagName === "SPAN") {
+    e.target.classList.remove("hidden")
   } else if (e.target.tagName === "DIV") {
-    e.target.firstElementChild.classList.remove("hidden");
+    e.target.firstElementChild.classList.remove("hidden")
   }
+  console.log(currentTurn)
 }
 
 function generateGameBoard() {
-  parentContainer.innerHTML = null;
-  let cards = generateCards(16);
+  parentContainer.innerHTML = null
+  let cards = generateCards(16)
   cards.forEach(card => {
-    parentContainer.appendChild(card);
+    parentContainer.appendChild(card)
   });
 }
 
@@ -85,7 +92,6 @@ function generateRandPairs(database, matchIndices, pairs) {
 }
 
 // Function randomly assigns content to each card based on the array of random pairs produced by another function. 
-// Accesses the values of the quote and movie properties of that array using the . method.
 function appendCardContent(cards, cardIndices, pairs) {
   pairs.forEach((pair, idx) => {
     const randIndex = cardIndices[idx];
